@@ -1,4 +1,4 @@
-package com.example.flutter_f6sny
+package com.f6sny.f6sny
 
 import io.flutter.embedding.android.FlutterActivity
 
