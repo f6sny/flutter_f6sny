@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_f6sny/pages/my_home_page.dart';
+import 'package:flutter_f6sny/screens/splash.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() {
@@ -12,21 +12,20 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      localizationsDelegates: const [
-        GlobalCupertinoLocalizations.delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-      ],
-      supportedLocales: const [
-        Locale("ar", "SA"), // OR Locale('ar', 'AE') OR Other RTL locales
-      ],
-      locale: const Locale("ar", "SA"),
-      title: 'F6sny',
-      theme: ThemeData(
-        primarySwatch: Colors.yellow,
-      ),
-      home: const MyHomePage(title: 'Timeline'),
-    );
+        debugShowCheckedModeBanner: false,
+        localizationsDelegates: const [
+          GlobalCupertinoLocalizations.delegate,
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+        ],
+        supportedLocales: const [
+          Locale("ar", "SA"), // OR Locale('ar', 'AE') OR Other RTL locales
+        ],
+        locale: const Locale("ar", "SA"),
+        title: 'F6sny',
+        theme: ThemeData(
+          primarySwatch: Colors.yellow,
+        ),
+        home: const Splash());
   }
 }
