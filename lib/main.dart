@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_f6sny/screens/about.dart';
+import 'package:flutter_f6sny/screens/home.dart';
 import 'package:flutter_f6sny/screens/splash.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
@@ -23,6 +25,11 @@ class MyApp extends StatelessWidget {
         ],
         locale: const Locale("ar", "SA"),
         title: 'F6sny',
+        initialRoute: '/',
+        routes: {
+          '/home': (context) => const Home(title: 'آخر النكت'),
+          '/about': (context) => const About(),
+        },
         theme: ThemeData(
           primarySwatch: Colors.yellow,
         ),

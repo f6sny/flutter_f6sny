@@ -1,7 +1,7 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_f6sny/pages/my_home_page.dart';
+import 'package:flutter_f6sny/screens/home.dart';
 
 class Splash extends StatelessWidget {
   const Splash({Key? key}) : super(key: key);
@@ -27,7 +27,7 @@ class Splash extends StatelessWidget {
           ],
         )),
       ),
-      nextScreen: const MyHomePage(title: "آخر النكت"),
+      nextScreen: const Home(title: "آخر النكت"),
       duration: 2500,
     );
   }

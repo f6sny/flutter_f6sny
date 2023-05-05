@@ -1,23 +1,28 @@
+import 'dart:io' show Platform;
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_f6sny/constants.dart' as constants;
-import 'package:timeago/timeago.dart' as timeago;
-
 import 'package:flutter_f6sny/model/joke.dart';
-
+import 'package:flutter_f6sny/widgets/bottom_navigation_menu.dart';
 import '../helpers/jokes_repository.dart';
+import '../widgets/jokes_list_item.dart';
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
+class Home extends StatefulWidget {
+  const Home({super.key, required this.title});
 
   final String title;
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<Home> createState() => _HomeState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _HomeState extends State<Home> {
   late ScrollController _scrollController;
   final List<Joke> _jokes = [];
+  final indicator = Platform.isAndroid
+      ? const CircularProgressIndicator()
+      : const CupertinoActivityIndicator();
   int _page = 1;
   bool _isLoading = false;
   bool _hasMore = true;
@@ -68,9 +73,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    timeago.setLocaleMessages('ar', timeago.ArMessages());
-    timeago.setLocaleMessages('ar_short', timeago.ArShortMessages());
     return Scaffold(
+      bottomNavigationBar: BottomNavigationMenu(selectedIndex: 0),
       appBar: AppBar(
         title: Text(
           widget.title,
@@ -85,46 +89,15 @@ class _MyHomePageState extends State<MyHomePage> {
             controller: _scrollController,
             itemBuilder: ((context, index) {
               if (index == _jokes.length) {
-                return const SizedBox(
+                return SizedBox(
                   width: 60,
                   height: 60,
                   child: FittedBox(
-                    child: CircularProgressIndicator(),
+                    child: indicator,
                   ),
                 );
               }
-              final joke = _jokes[index];
-              return Card(
-                child: Padding(
-                  padding: const EdgeInsets.all(constants.spacingFactor),
-                  child: Column(
-                    children: [
-                      Text(
-                        joke.content,
-                        style: DefaultTextStyle.of(context).style.apply(
-                              fontSizeFactor: constants.fontSizeFactor,
-                            ),
-                      ),
-                      const SizedBox(
-                        height: constants.spacingFactor,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          Text(
-                            "بواسطة ${joke.author}, ${timeago.format(joke.modifiedAt, locale: 'ar')}",
-                            style: DefaultTextStyle.of(context).style.apply(
-                                  fontSizeFactor:
-                                      (constants.fontSizeFactor * 0.7),
-                                  color: Colors.black38,
-                                ),
-                          ),
-                        ],
-                      )
-                    ],
-                  ),
-                ),
-              );
+              return JokesListItem(joke: _jokes[index]);
             }),
             separatorBuilder: ((context, index) => const SizedBox(
                   height: constants.spacingFactor,
