@@ -1,8 +1,12 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_f6sny/screens/about.dart';
 import 'package:flutter_f6sny/screens/home.dart';
 import 'package:flutter_f6sny/screens/splash.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_f6sny/constants.dart' as constants;
+
+import 'app_routes.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,22 +15,35 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
+  CupertinoThemeData _buildThemeData() {
+    return const CupertinoThemeData(
+      barBackgroundColor: Color.fromARGB(255, 255, 230, 0),
+      scaffoldBackgroundColor: Color.fromARGB(255, 245, 245, 245),
+      primaryColor: Color.fromARGB(255, 115, 98, 0),
+      primaryContrastingColor: Colors.green,
+      textTheme: CupertinoTextThemeData(
+        tabLabelTextStyle: TextStyle(color: Colors.blue),
+        navTitleTextStyle: TextStyle(
+            color: Colors.black87, fontSize: constants.fontSize * 1.4),
+        primaryColor: Colors.pink,
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return CupertinoApp(
         debugShowCheckedModeBanner: false,
         localizationsDelegates: AppLocalizations.localizationsDelegates,
         supportedLocales: AppLocalizations.supportedLocales,
-        locale: const Locale("en"),
+        locale: const Locale("ar"),
         title: 'F6sny',
         initialRoute: '/',
         routes: {
-          '/home': (context) => const Home(title: 'آخر النكت'),
-          '/about': (context) => const About(),
+          AppRoutes.home: (context) => const Home(),
+          AppRoutes.about: (context) => const About(),
         },
-        theme: ThemeData(
-          primarySwatch: Colors.yellow,
-        ),
+        theme: _buildThemeData(),
         home: const Splash());
   }
 }

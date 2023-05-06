@@ -1,22 +1,18 @@
-import 'package:flutter/material.dart';
-
-import '../widgets/bottom_navigation_menu.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class About extends StatelessWidget {
   const About({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        bottomNavigationBar: const BottomNavigationMenu(selectedIndex: 1),
-        appBar: AppBar(
-          title: const Text(
-            "مزيد",
-            style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
+    return CupertinoPageScaffold(
+        navigationBar: CupertinoNavigationBar(
+            middle: Text(AppLocalizations.of(context)!.morePageTitle)),
+        child: SafeArea(
+          child: Column(
+            children: const [Text("Testing")],
           ),
-        ),
-        body: Column(
-          children: const [Text("Testing")],
         ));
   }
 }

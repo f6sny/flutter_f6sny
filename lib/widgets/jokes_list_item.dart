@@ -34,8 +34,10 @@ class JokesListItem extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Text(
-                  AppLocalizations.of(context)!.createdByWhen(joke.author,
-                      timeago.format(joke.modifiedAt, locale: 'ar')),
+                  AppLocalizations.of(context)!.createdByWhen(
+                      joke.author,
+                      timeago.format(joke.modifiedAt,
+                          locale: AppLocalizations.of(context)!.localeName)),
                   style: DefaultTextStyle.of(context).style.apply(
                         fontSizeFactor: (constants.fontSizeFactor * 0.7),
                         color: Colors.black38,

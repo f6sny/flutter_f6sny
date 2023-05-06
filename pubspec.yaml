@@ -2,7 +2,7 @@ name: flutter_f6sny
 description: to make you laugh a little
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
-version: 1.0.0+1
+version: 2.0.1+1
 
 environment:
   sdk: '>=2.19.6 <3.0.0'
@@ -29,10 +29,11 @@ dev_dependencies:
 flutter_icons:
   android: true
   ios: true
-  image_path: "assets/images/icons/appstore.png"
+  image_path: "assets/images/icons/app-icons/AppStore-1024@1x.png"
 
 flutter:
   uses-material-design: true
   generate: true
   assets:
-    - assets/images/
+    - assets/images/splash/
+

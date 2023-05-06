@@ -4,14 +4,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_f6sny/constants.dart' as constants;
 import 'package:flutter_f6sny/model/joke.dart';
-import 'package:flutter_f6sny/widgets/bottom_navigation_menu.dart';
 import '../helpers/jokes_repository.dart';
 import '../widgets/jokes_list_item.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class Home extends StatefulWidget {
-  const Home({super.key, required this.title});
-
-  final String title;
+  const Home({super.key});
 
   @override
   State<Home> createState() => _HomeState();
@@ -73,39 +71,32 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      bottomNavigationBar: const BottomNavigationMenu(selectedIndex: 0),
-      appBar: AppBar(
-        title: Text(
-          widget.title,
-          style:
-              const TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
-        ),
-      ),
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(constants.spacingFactor),
-          child: ListView.separated(
-            controller: _scrollController,
-            itemBuilder: ((context, index) {
-              if (index == _jokes.length) {
-                return SizedBox(
-                  width: 60,
-                  height: 60,
-                  child: FittedBox(
-                    child: indicator,
-                  ),
-                );
-              }
-              return JokesListItem(joke: _jokes[index]);
-            }),
-            separatorBuilder: ((context, index) => const SizedBox(
-                  height: constants.spacingFactor,
-                )),
-            itemCount: _jokes.length + (_hasMore ? 1 : 0),
+    return CupertinoPageScaffold(
+        navigationBar: CupertinoNavigationBar(
+            middle: Text(AppLocalizations.of(context)!.homePageTitle)),
+        child: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.all(constants.spacingFactor),
+            child: ListView.separated(
+              controller: _scrollController,
+              itemBuilder: ((context, index) {
+                if (index == _jokes.length) {
+                  return SizedBox(
+                    width: 32,
+                    height: 32,
+                    child: FittedBox(
+                      child: indicator,
+                    ),
+                  );
+                }
+                return JokesListItem(joke: _jokes[index]);
+              }),
+              separatorBuilder: ((context, index) => const SizedBox(
+                    height: constants.spacingFactor,
+                  )),
+              itemCount: _jokes.length + (_hasMore ? 1 : 0),
+            ),
           ),
-        ),
-      ),
-    );
+        ));
   }
 }

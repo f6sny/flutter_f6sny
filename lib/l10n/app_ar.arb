@@ -1,4 +1,5 @@
 {
-    "timeline": "الخط الزمني",
-    "createdByWhen": "كتبها {author}, {time}"
+    "homePageTitle": "الرئيسية",
+    "createdByWhen": "كتبها {author}, {time}",
+    "morePageTitle": "مزيد"
 }

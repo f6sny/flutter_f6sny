@@ -1,4 +1,5 @@
 {
-    "timeline": "Timeline",
-    "createdByWhen": "Created by {author}, {time}"
+    "homePageTitle": "home",
+    "createdByWhen": "Created by {author}, {time}",
+    "morePageTitle": "more"
 }
