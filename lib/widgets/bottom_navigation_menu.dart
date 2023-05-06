@@ -5,7 +5,7 @@ import '../screens/home.dart';
 class BottomNavigationMenu extends StatefulWidget {
   final int selectedIndex;
 
-  BottomNavigationMenu({Key? key, required this.selectedIndex})
+  const BottomNavigationMenu({Key? key, required this.selectedIndex})
       : super(key: key);
 
   @override
@@ -46,12 +46,13 @@ class _BottomNavigationMenu extends State<BottomNavigationMenu> {
   Widget build(BuildContext context) {
     return NavigationBarTheme(
         data: NavigationBarThemeData(
-            indicatorColor: Colors.red,
-            labelTextStyle: MaterialStateProperty.all(const TextStyle(
-                fontSize: constants.fontSize,
-                fontWeight: FontWeight.w500,
-                color: Colors.blue)),
-            backgroundColor: Colors.yellow),
+          //indicatorColor: Colors.red,
+          labelTextStyle: MaterialStateProperty.all(const TextStyle(
+              fontSize: constants.fontSize,
+              fontWeight: FontWeight.w500,
+              color: Colors.blue)),
+          //backgroundColor: Colors.yellow
+        ),
         child: NavigationBar(
             selectedIndex: _selectedIndex,
             onDestinationSelected: _onItemTapped,

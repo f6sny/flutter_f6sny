@@ -8,7 +8,7 @@ class About extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        bottomNavigationBar: BottomNavigationMenu(selectedIndex: 1),
+        bottomNavigationBar: const BottomNavigationMenu(selectedIndex: 1),
         appBar: AppBar(
           title: const Text(
             "مزيد",

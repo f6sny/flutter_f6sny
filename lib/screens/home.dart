@@ -74,7 +74,7 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: BottomNavigationMenu(selectedIndex: 0),
+      bottomNavigationBar: const BottomNavigationMenu(selectedIndex: 0),
       appBar: AppBar(
         title: Text(
           widget.title,

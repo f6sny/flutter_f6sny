@@ -2,6 +2,7 @@ import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_f6sny/screens/home.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class Splash extends StatelessWidget {
   const Splash({Key? key}) : super(key: key);
@@ -14,20 +15,14 @@ class Splash extends StatelessWidget {
       pageTransitionType: PageTransitionType.rightToLeft,
       splash: Scaffold(
         backgroundColor: Colors.transparent,
-        body: Center(
-            child: Column(
+        body: Column(
           children: [
-            SizedBox(
-              child: Image.asset(
-                'assets/images/Logo.png',
-                height: 150,
-              ),
-            ),
-            const Text("بكل ❤️ من الدرجات الست")
+            Image.asset('assets/images/splash/SplashScreenMain.png'),
+            Image.asset('assets/images/splash/SplashScreenSecondary.png')
           ],
-        )),
+        ),
       ),
-      nextScreen: const Home(title: "آخر النكت"),
+      nextScreen: Home(title: AppLocalizations.of(context)!.timeline),
       duration: 2500,
     );
   }

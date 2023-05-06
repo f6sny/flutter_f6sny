@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_f6sny/constants.dart' as constants;
 import 'package:timeago/timeago.dart' as timeago;
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+import '../model/joke.dart';
 
 class JokesListItem extends StatelessWidget {
-  final joke;
+  final Joke joke;
 
   const JokesListItem({super.key, required this.joke});
 
@@ -31,7 +34,8 @@ class JokesListItem extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Text(
-                  "بواسطة ${joke.author}, ${timeago.format(joke.modifiedAt, locale: 'ar')}",
+                  AppLocalizations.of(context)!.createdByWhen(joke.author,
+                      timeago.format(joke.modifiedAt, locale: 'ar')),
                   style: DefaultTextStyle.of(context).style.apply(
                         fontSizeFactor: (constants.fontSizeFactor * 0.7),
                         color: Colors.black38,
