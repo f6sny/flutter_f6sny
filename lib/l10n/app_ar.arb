@@ -1,5 +1,7 @@
 {
-    "homePageTitle": "الرئيسية",
-    "createdByWhen": "كتبها {author}, {time}",
-    "morePageTitle": "مزيد"
+  "createdByWhen": "كتبها {author}, {time}",
+  "homePageTitle": "الرئيسية",
+  "searchPageTitle": "البحث",
+  "settingsPageTitle": "الإعدادات",
+  "tagsPageTitle": "التصنيفات"
 }

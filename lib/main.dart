@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_f6sny/screens/about.dart';
+import 'package:flutter_f6sny/screens/search.dart';
+import 'package:flutter_f6sny/screens/settings.dart';
 import 'package:flutter_f6sny/screens/home.dart';
 import 'package:flutter_f6sny/screens/splash.dart';
+import 'package:flutter_f6sny/screens/tags.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_f6sny/constants.dart' as constants;
 
@@ -22,7 +24,9 @@ class MyApp extends StatelessWidget {
       primaryColor: Color.fromARGB(255, 115, 98, 0),
       primaryContrastingColor: Colors.green,
       textTheme: CupertinoTextThemeData(
-        tabLabelTextStyle: TextStyle(color: Colors.blue),
+        textStyle:
+            TextStyle(fontSize: constants.fontSize, color: Colors.black87),
+        tabLabelTextStyle: TextStyle(color: Colors.black87),
         navTitleTextStyle: TextStyle(
             color: Colors.black87, fontSize: constants.fontSize * 1.4),
         primaryColor: Colors.pink,
@@ -33,6 +37,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CupertinoApp(
+        showPerformanceOverlay: true,
         debugShowCheckedModeBanner: false,
         localizationsDelegates: AppLocalizations.localizationsDelegates,
         supportedLocales: AppLocalizations.supportedLocales,
@@ -41,7 +46,9 @@ class MyApp extends StatelessWidget {
         initialRoute: '/',
         routes: {
           AppRoutes.home: (context) => const Home(),
-          AppRoutes.about: (context) => const About(),
+          AppRoutes.search: (context) => const Search(),
+          AppRoutes.tags: (context) => const Tags(),
+          AppRoutes.settings: (context) => const Settings(),
         },
         theme: _buildThemeData(),
         home: const Splash());

@@ -1,9 +1,6 @@
 import 'dart:io' show Platform;
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_f6sny/constants.dart' as constants;
-import 'package:flutter_f6sny/model/joke.dart';
 import '../helpers/jokes_repository.dart';
 import '../widgets/jokes_list_item.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -17,7 +14,7 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   late ScrollController _scrollController;
-  final List<Joke> _jokes = [];
+  final List _jokes = [];
   final indicator = Platform.isAndroid
       ? const CircularProgressIndicator()
       : const CupertinoActivityIndicator();
@@ -76,7 +73,7 @@ class _HomeState extends State<Home> {
             middle: Text(AppLocalizations.of(context)!.homePageTitle)),
         child: SafeArea(
           child: Padding(
-            padding: const EdgeInsets.all(constants.spacingFactor),
+            padding: const EdgeInsets.all(0),
             child: ListView.separated(
               controller: _scrollController,
               itemBuilder: ((context, index) {
@@ -91,8 +88,8 @@ class _HomeState extends State<Home> {
                 }
                 return JokesListItem(joke: _jokes[index]);
               }),
-              separatorBuilder: ((context, index) => const SizedBox(
-                    height: constants.spacingFactor,
+              separatorBuilder: ((context, index) => const Divider(
+                    height: 1,
                   )),
               itemCount: _jokes.length + (_hasMore ? 1 : 0),
             ),

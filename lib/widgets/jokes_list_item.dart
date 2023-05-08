@@ -1,52 +1,80 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_f6sny/constants.dart' as constants;
-import 'package:timeago/timeago.dart' as timeago;
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
-import '../model/joke.dart';
+import 'package:flutter_f6sny/widgets/jokes_footer.dart';
+import 'package:flutter_f6sny/widgets/jokes_footer_actions.dart';
+import 'package:flutter_f6sny/widgets/jokes_header.dart';
 
 class JokesListItem extends StatelessWidget {
-  final Joke joke;
+  final dynamic joke;
 
   const JokesListItem({super.key, required this.joke});
 
+  Widget _authorAvatar() {
+    String userInitials =
+        joke["author"]["username"].toString().substring(0, 2).toUpperCase();
+
+    if (joke["display_picture"] == null) {
+      return CircleAvatar(
+        backgroundColor: Colors.black12,
+        radius: 20,
+        child: Text(userInitials,
+            style: const TextStyle(
+                color: Colors.black54, fontSize: constants.fontSize * 1.2)),
+      );
+    }
+
+    return CircleAvatar(
+      backgroundColor: Colors.black12,
+      radius: 30,
+      backgroundImage: NetworkImage(joke["display_picture"]),
+      child: Text(userInitials, style: const TextStyle(color: Colors.black54)),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    timeago.setLocaleMessages('ar', timeago.ArMessages());
-    timeago.setLocaleMessages('ar_short', timeago.ArShortMessages());
+    print(joke["display_picture"]);
 
-    return Card(
-      child: Padding(
-        padding: const EdgeInsets.all(constants.spacingFactor),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              joke.content,
-              style: DefaultTextStyle.of(context).style.apply(
-                    fontSizeFactor: constants.fontSizeFactor,
-                  ),
-            ),
-            const SizedBox(
-              height: constants.spacingFactor,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Text(
-                  AppLocalizations.of(context)!.createdByWhen(
-                      joke.author,
-                      timeago.format(joke.modifiedAt,
-                          locale: AppLocalizations.of(context)!.localeName)),
-                  style: DefaultTextStyle.of(context).style.apply(
-                        fontSizeFactor: (constants.fontSizeFactor * 0.7),
-                        color: Colors.black38,
-                      ),
-                ),
-              ],
-            )
-          ],
-        ),
+    return Padding(
+      padding: const EdgeInsets.only(
+          bottom: constants.spacingFactor,
+          top: constants.spacingFactor,
+          right: constants.spacingFactor,
+          left: constants.spacingFactor * 2),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Expanded(
+                  flex: 5,
+                  child: Padding(
+                    padding: const EdgeInsets.only(
+                        left: constants.spacingFactor * 2),
+                    child: Column(
+                      children: [
+                        JokesHeader(
+                            author: joke["author"],
+                            jokeUpdatedAt: joke["updated_at"]),
+                        Text(
+                          joke["content"],
+                        ),
+                        JokesFooter(
+                          tags: joke["tags"],
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        const JokesFooterActions(),
+                      ],
+                    ),
+                  )),
+              _authorAvatar(),
+            ],
+          )
+        ],
       ),
     );
   }

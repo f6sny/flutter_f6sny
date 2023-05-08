@@ -1,5 +1,7 @@
 {
-    "homePageTitle": "home",
-    "createdByWhen": "Created by {author}, {time}",
-    "morePageTitle": "more"
+  "createdByWhen": "Created by {author}, {time}",
+  "homePageTitle": "home",
+  "searchPageTitle": "Search",
+  "settingsPageTitle": "Settings",
+  "tagsPageTitle": "Tags"
 }
