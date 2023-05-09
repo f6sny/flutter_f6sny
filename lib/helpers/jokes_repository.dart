@@ -4,7 +4,7 @@ import 'package:flutter_f6sny/constants.dart' as constants;
 import 'package:http/http.dart' as http;
 
 class JokesRepository {
-  static const _baseUrl = '${constants.baseUrl}jokes';
+  static const _baseUrl = '${constants.baseUrl}/jokes';
 
   static Future<List> getJokes({int page = 1}) async {
     print('getting jokes');

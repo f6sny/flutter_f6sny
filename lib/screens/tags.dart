@@ -44,16 +44,14 @@ class _TagsState extends State<Tags> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(_tags[index]["title"],
-                        style: const TextStyle(
-                          inherit: true,
-                          fontSize: constants.fontSize * 1.4,
-                          fontWeight: FontWeight.w600,
-                        )),
+                        style: DefaultTextStyle.of(context).style.apply(
+                              fontSizeFactor: 1.4,
+                              fontWeightDelta: 2,
+                            )),
                     Text(_tags[index]["description"],
-                        style: const TextStyle(
-                          inherit: true,
-                          color: Colors.black54,
-                        )),
+                        style: DefaultTextStyle.of(context).style.apply(
+                              color: Colors.black54,
+                            )),
                   ],
                 ),
               );

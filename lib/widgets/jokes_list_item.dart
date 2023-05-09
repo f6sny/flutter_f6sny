@@ -9,25 +9,34 @@ class JokesListItem extends StatelessWidget {
 
   const JokesListItem({super.key, required this.joke});
 
-  Widget _authorAvatar() {
+  Widget _authorAvatar(BuildContext context) {
     String userInitials =
         joke["author"]["username"].toString().substring(0, 2).toUpperCase();
 
-    if (joke["display_picture"] == null) {
+    if (joke["author"]["display_picture"] == null) {
       return CircleAvatar(
         backgroundColor: Colors.black12,
-        radius: 20,
-        child: Text(userInitials,
-            style: const TextStyle(
-                color: Colors.black54, fontSize: constants.fontSize * 1.2)),
+        radius: 26,
+        child: Text(
+          userInitials,
+          // style: DefaultTextStyle.of(context)
+          // .style
+          //   .apply(color: Colors.black54, fontSizeFactor: 1.2)
+        ),
       );
     }
 
+    String avatarURL = constants.baseUrl +
+        joke["author"]["display_picture"]["formats"]["thumbnail"]["url"];
     return CircleAvatar(
       backgroundColor: Colors.black12,
-      radius: 30,
-      backgroundImage: NetworkImage(joke["display_picture"]),
-      child: Text(userInitials, style: const TextStyle(color: Colors.black54)),
+      radius: 26,
+      backgroundImage: NetworkImage(avatarURL),
+      child: Text(
+        userInitials,
+        //style:
+        // DefaultTextStyle.of(context).style.apply(color: Colors.black54)
+      ),
     );
   }
 
@@ -48,11 +57,12 @@ class JokesListItem extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
+              _authorAvatar(context),
               Expanded(
                   flex: 5,
                   child: Padding(
                     padding: const EdgeInsets.only(
-                        left: constants.spacingFactor * 2),
+                        right: constants.spacingFactor * 2),
                     child: Column(
                       children: [
                         JokesHeader(
@@ -67,11 +77,10 @@ class JokesListItem extends StatelessWidget {
                         const SizedBox(
                           height: 10,
                         ),
-                        const JokesFooterActions(),
+                        JokesFooterActions(joke: joke),
                       ],
                     ),
                   )),
-              _authorAvatar(),
             ],
           )
         ],

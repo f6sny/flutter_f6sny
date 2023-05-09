@@ -1,6 +1,7 @@
 {
   "createdByWhen": "Created by {author}, {time}",
   "homePageTitle": "home",
+  "jokePageTitle": "Joke",
   "searchPageTitle": "Search",
   "settingsPageTitle": "Settings",
   "tagsPageTitle": "Tags"

@@ -24,8 +24,6 @@ class MyApp extends StatelessWidget {
       primaryColor: Color.fromARGB(255, 115, 98, 0),
       primaryContrastingColor: Colors.green,
       textTheme: CupertinoTextThemeData(
-        textStyle:
-            TextStyle(fontSize: constants.fontSize, color: Colors.black87),
         tabLabelTextStyle: TextStyle(color: Colors.black87),
         navTitleTextStyle: TextStyle(
             color: Colors.black87, fontSize: constants.fontSize * 1.4),
@@ -37,7 +35,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CupertinoApp(
-        showPerformanceOverlay: true,
         debugShowCheckedModeBanner: false,
         localizationsDelegates: AppLocalizations.localizationsDelegates,
         supportedLocales: AppLocalizations.supportedLocales,

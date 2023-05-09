@@ -14,13 +14,12 @@ class Settings extends StatelessWidget {
             child: Padding(
           padding: const EdgeInsets.all(constants.spacingFactor),
           child: Column(
-            children: const [
+            children: [
               Text(
                 "صفحة الإعدادات",
-                style: TextStyle(
-                    inherit: true,
-                    fontWeight: FontWeight.w600,
-                    fontSize: constants.fontSize * 1.5),
+                style: DefaultTextStyle.of(context)
+                    .style
+                    .apply(fontWeightDelta: 2, fontSizeFactor: 1.5),
               )
             ],
           ),
