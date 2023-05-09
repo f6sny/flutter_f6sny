@@ -2,7 +2,7 @@ import 'dart:io' show Platform;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../helpers/jokes_repository.dart';
-import '../widgets/jokes_list_item.dart';
+import '../widgets/user_content.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class Home extends StatefulWidget {
@@ -86,7 +86,7 @@ class _HomeState extends State<Home> {
                     ),
                   );
                 }
-                return JokesListItem(joke: _jokes[index]);
+                return userContent(joke: _jokes[index]);
               }),
               separatorBuilder: ((context, index) => const Divider(
                     height: 1,

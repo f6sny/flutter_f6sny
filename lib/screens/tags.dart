@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_f6sny/helpers/tags_repository.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -24,7 +25,9 @@ class _TagsState extends State<Tags> {
   @override
   void initState() {
     super.initState();
-    print('hi from  tags');
+    if (kDebugMode) {
+      print('hi from  tags');
+    }
     _getTags();
   }
 

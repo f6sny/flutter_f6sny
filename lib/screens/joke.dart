@@ -1,8 +1,11 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter_f6sny/widgets/jokes_page_comments_area.dart';
+import 'package:flutter_f6sny/widgets/jokes_page_joke_area.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_f6sny/constants.dart' as constants;
 
-import '../widgets/jokes_list_item.dart';
+import '../widgets/user_content.dart';
 
 class Joke extends StatelessWidget {
   final dynamic joke;
@@ -10,7 +13,9 @@ class Joke extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('im here in the joke screen item field');
+    if (kDebugMode) {
+      print('im here in the joke screen item field');
+    }
     return CupertinoPageScaffold(
         navigationBar: CupertinoNavigationBar(
             middle: Text(AppLocalizations.of(context)!.jokePageTitle)),
@@ -19,9 +24,13 @@ class Joke extends StatelessWidget {
           padding: const EdgeInsets.all(constants.spacingFactor),
           child: Column(
             children: [
-              JokesListItem(
+              JokesPageJokeArea(
                 joke: joke,
-              )
+              ),
+              const SizedBox(
+                height: 16,
+              ),
+              JokesPageCommentsArea(jokeComments: joke["comments"]),
             ],
           ),
         )));

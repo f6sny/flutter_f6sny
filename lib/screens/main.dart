@@ -5,9 +5,7 @@ import 'package:flutter_f6sny/screens/tags.dart';
 import 'home.dart';
 
 class Main extends StatefulWidget {
-  const Main({super.key, required this.title});
-
-  final String title;
+  const Main({super.key});
 
   @override
   State<Main> createState() => _MainState();

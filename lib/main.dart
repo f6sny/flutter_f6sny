@@ -19,15 +19,48 @@ class MyApp extends StatelessWidget {
 
   CupertinoThemeData _buildThemeData() {
     return const CupertinoThemeData(
-      barBackgroundColor: Color.fromARGB(255, 255, 230, 0),
-      scaffoldBackgroundColor: Color.fromARGB(255, 245, 245, 245),
+      brightness: null,
       primaryColor: Color.fromARGB(255, 115, 98, 0),
       primaryContrastingColor: Colors.green,
+      barBackgroundColor: CupertinoDynamicColor.withBrightness(
+        color: Color.fromARGB(255, 255, 230, 0),
+        darkColor: Color(0xF01D1D1D),
+      ),
+      scaffoldBackgroundColor: Color.fromARGB(255, 245, 245, 245),
       textTheme: CupertinoTextThemeData(
-        tabLabelTextStyle: TextStyle(color: Colors.black87),
-        navTitleTextStyle: TextStyle(
-            color: Colors.black87, fontSize: constants.fontSize * 1.4),
         primaryColor: Colors.pink,
+        textStyle: TextStyle(
+            color: Colors.black87,
+            fontSize: constants.fontSize,
+            fontWeight: FontWeight.w100),
+        actionTextStyle: TextStyle(
+            color: Colors.black87,
+            fontSize: constants.fontSize,
+            fontWeight: FontWeight.w100),
+        tabLabelTextStyle: TextStyle(
+            color: Colors.black87,
+            fontSize: constants.fontSize * 2,
+            fontWeight: FontWeight.w100),
+        navTitleTextStyle: TextStyle(
+            color: Colors.black87,
+            fontSize: constants.fontSize * 1.2,
+            fontWeight: FontWeight.w100),
+        navLargeTitleTextStyle: TextStyle(
+            color: Colors.black87,
+            fontSize: constants.fontSize * 1.4,
+            fontWeight: FontWeight.w100),
+        navActionTextStyle: TextStyle(
+            color: Colors.black87,
+            fontSize: constants.fontSize,
+            fontWeight: FontWeight.w100),
+        pickerTextStyle: TextStyle(
+            color: Colors.black87,
+            fontSize: constants.fontSize,
+            fontWeight: FontWeight.w100),
+        dateTimePickerTextStyle: TextStyle(
+            color: Colors.black87,
+            fontSize: constants.fontSize,
+            fontWeight: FontWeight.w100),
       ),
     );
   }

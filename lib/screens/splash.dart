@@ -31,7 +31,7 @@ class Splash extends StatelessWidget {
           ],
         ),
       ),
-      nextScreen: Main(title: AppLocalizations.of(context)!.homePageTitle),
+      nextScreen: Main(),
       duration: 2500,
     );
   }

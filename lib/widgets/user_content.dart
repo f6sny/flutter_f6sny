@@ -4,39 +4,34 @@ import 'package:flutter_f6sny/widgets/jokes_footer.dart';
 import 'package:flutter_f6sny/widgets/jokes_footer_actions.dart';
 import 'package:flutter_f6sny/widgets/jokes_header.dart';
 
-class JokesListItem extends StatelessWidget {
+class userContent extends StatelessWidget {
   final dynamic joke;
 
-  const JokesListItem({super.key, required this.joke});
+  const userContent({super.key, required this.joke});
 
   Widget _authorAvatar(BuildContext context) {
     String userInitials =
         joke["author"]["username"].toString().substring(0, 2).toUpperCase();
 
     if (joke["author"]["display_picture"] == null) {
+      print('picture is null');
       return CircleAvatar(
         backgroundColor: Colors.black12,
         radius: 26,
-        child: Text(
-          userInitials,
-          // style: DefaultTextStyle.of(context)
-          // .style
-          //   .apply(color: Colors.black54, fontSizeFactor: 1.2)
-        ),
+        child: Text(userInitials,
+            style: DefaultTextStyle.of(context).style.apply(
+                fontWeightDelta: 2,
+                color: Colors.black54,
+                fontSizeFactor: 1.2)),
       );
     }
-
+    print('picture is not null');
     String avatarURL = constants.baseUrl +
         joke["author"]["display_picture"]["formats"]["thumbnail"]["url"];
     return CircleAvatar(
       backgroundColor: Colors.black12,
       radius: 26,
       backgroundImage: NetworkImage(avatarURL),
-      child: Text(
-        userInitials,
-        //style:
-        // DefaultTextStyle.of(context).style.apply(color: Colors.black54)
-      ),
     );
   }
 
@@ -57,19 +52,28 @@ class JokesListItem extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              _authorAvatar(context),
               Expanded(
                   flex: 5,
                   child: Padding(
                     padding: const EdgeInsets.only(
-                        right: constants.spacingFactor * 2),
+                        left: constants.spacingFactor * 2),
                     child: Column(
                       children: [
                         JokesHeader(
-                            author: joke["author"],
-                            jokeUpdatedAt: joke["updated_at"]),
-                        Text(
-                          joke["content"],
+                          author: joke["author"],
+                          jokeUpdatedAt: joke["updated_at"],
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Row(
+                          children: [
+                            Expanded(
+                              child: Text(
+                                joke["content"],
+                              ),
+                            ),
+                          ],
                         ),
                         JokesFooter(
                           tags: joke["tags"],
@@ -81,6 +85,7 @@ class JokesListItem extends StatelessWidget {
                       ],
                     ),
                   )),
+              _authorAvatar(context),
             ],
           )
         ],
