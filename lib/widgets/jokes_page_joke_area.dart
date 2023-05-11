@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_f6sny/constants.dart' as constants;
-import 'package:flutter_f6sny/widgets/jokes_footer.dart';
-import 'package:flutter_f6sny/widgets/jokes_footer_actions.dart';
-import 'package:flutter_f6sny/widgets/jokes_header.dart';
+import 'package:flutter_f6sny/widgets/content/user_content_footer.dart';
+import 'package:flutter_f6sny/widgets/content/user_content_footer_actions.dart';
+import 'package:flutter_f6sny/widgets/content/user_content_header.dart';
 
 class JokesPageJokeArea extends StatelessWidget {
   final dynamic joke;
@@ -62,7 +62,7 @@ class JokesPageJokeArea extends StatelessWidget {
                         left: constants.spacingFactor * 1.3),
                     child: Column(
                       children: [
-                        JokesHeader(
+                        UserContentHeader(
                           author: joke["author"],
                           jokeUpdatedAt: joke["updated_at"],
                           stacked: true,
@@ -70,13 +70,13 @@ class JokesPageJokeArea extends StatelessWidget {
                         Text(
                           joke["content"],
                         ),
-                        JokesFooter(
+                        UserContentFooter(
                           tags: joke["tags"],
                         ),
                         const SizedBox(
                           height: 10,
                         ),
-                        JokesFooterActions(joke: joke),
+                        UserContentFooterActions(joke: joke),
                       ],
                     ),
                   )),

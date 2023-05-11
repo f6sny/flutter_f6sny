@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_f6sny/constants.dart' as constants;
 
-class JokesFooter extends StatelessWidget {
-  final dynamic tags;
-  const JokesFooter({super.key, required this.tags});
+class UserContentFooter extends StatelessWidget {
+  final List? tags;
+  const UserContentFooter({super.key, this.tags});
 
   @override
   Widget build(BuildContext context) {
-    String formattedTags =
-        tags.map<String>((tag) => '#${tag['title']}').join('، ');
+    String formattedTags = "";
+    if (tags != null) {
+      formattedTags = tags!.map<String>((tag) => '#${tag['title']}').join('، ');
+    }
 
     return formattedTags.isNotEmpty
         ? Row(

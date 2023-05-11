@@ -4,11 +4,11 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:timeago/timeago.dart' as timeago;
 import 'package:namefully/namefully.dart';
 
-class JokesHeader extends StatelessWidget {
+class UserContentHeader extends StatelessWidget {
   final String jokeUpdatedAt;
   final dynamic author;
   final bool stacked;
-  const JokesHeader(
+  const UserContentHeader(
       {super.key,
       required this.author,
       required this.jokeUpdatedAt,
@@ -49,25 +49,23 @@ class JokesHeader extends StatelessWidget {
           ],
         );
       }
-      return Row(
-        children: [
-          RichText(
-            maxLines: 2,
-            overflow: TextOverflow.ellipsis,
-            text: TextSpan(
-              text: name.full,
-              style: DefaultTextStyle.of(context).style,
-              children: <TextSpan>[
-                TextSpan(
-                  locale: Locale('en'),
-                  text: "@${author["username"]}",
-                  style: usernameTextStyle,
-                ),
-                TextSpan(text: ". $timagoString", style: timeagoTextStyle),
-              ],
-            ),
+      return Expanded(
+        child: RichText(
+          maxLines: 2,
+          overflow: TextOverflow.ellipsis,
+          text: TextSpan(
+            text: name.full,
+            style: DefaultTextStyle.of(context).style,
+            children: <TextSpan>[
+              TextSpan(
+                locale: Locale('en'),
+                text: "@${author["username"]}",
+                style: usernameTextStyle,
+              ),
+              TextSpan(text: ". $timagoString", style: timeagoTextStyle),
+            ],
           ),
-        ],
+        ),
       );
     }
 

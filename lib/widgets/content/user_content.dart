@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_f6sny/constants.dart' as constants;
-import 'package:flutter_f6sny/widgets/jokes_footer.dart';
-import 'package:flutter_f6sny/widgets/jokes_footer_actions.dart';
-import 'package:flutter_f6sny/widgets/jokes_header.dart';
+import 'package:flutter_f6sny/widgets/content/user_content_footer.dart';
+import 'package:flutter_f6sny/widgets/content/user_content_footer_actions.dart';
+import 'package:flutter_f6sny/widgets/content/user_content_header.dart';
 
 class UserContent extends StatelessWidget {
-  final dynamic joke;
+  final dynamic content;
 
-  const UserContent({super.key, required this.joke});
+  const UserContent({super.key, required this.content});
 
   Widget _authorAvatar(BuildContext context) {
     String userInitials =
-        joke["author"]["username"].toString().substring(0, 2).toUpperCase();
+        content["author"]["username"].toString().substring(0, 2).toUpperCase();
 
-    if (joke["author"]["display_picture"] == null) {
+    if (content["author"]["display_picture"] == null) {
       return CircleAvatar(
         backgroundColor: Colors.black12,
         radius: 26,
@@ -25,7 +25,7 @@ class UserContent extends StatelessWidget {
       );
     }
     String avatarURL = constants.baseUrl +
-        joke["author"]["display_picture"]["formats"]["thumbnail"]["url"];
+        content["author"]["display_picture"]["formats"]["thumbnail"]["url"];
     return CircleAvatar(
       backgroundColor: Colors.black12,
       radius: 26,
@@ -55,9 +55,9 @@ class UserContent extends StatelessWidget {
                         left: constants.spacingFactor * 2),
                     child: Column(
                       children: [
-                        JokesHeader(
-                          author: joke["author"],
-                          jokeUpdatedAt: joke["created_at"],
+                        UserContentHeader(
+                          author: content["author"],
+                          jokeUpdatedAt: content["created_at"],
                         ),
                         const SizedBox(
                           height: 10,
@@ -66,18 +66,18 @@ class UserContent extends StatelessWidget {
                           children: [
                             Expanded(
                               child: Text(
-                                joke["content"],
+                                content["content"],
                               ),
                             ),
                           ],
                         ),
-                        JokesFooter(
-                          tags: joke["tags"],
+                        UserContentFooter(
+                          tags: content["tags"],
                         ),
                         const SizedBox(
                           height: 10,
                         ),
-                        JokesFooterActions(joke: joke),
+                        UserContentFooterActions(joke: content),
                       ],
                     ),
                   )),

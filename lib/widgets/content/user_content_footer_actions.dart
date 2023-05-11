@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_f6sny/constants.dart' as constants;
 import 'package:share_plus/share_plus.dart';
 
-import '../screens/joke.dart';
+import '../../screens/joke.dart';
 
-class JokesFooterActions extends StatelessWidget {
+class UserContentFooterActions extends StatelessWidget {
   final dynamic joke;
 
-  const JokesFooterActions({super.key, required this.joke});
+  const UserContentFooterActions({super.key, required this.joke});
 
   @override
   Widget build(BuildContext context) {
