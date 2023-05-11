@@ -43,7 +43,7 @@ class JokesHeader extends StatelessWidget {
               textDirection: TextDirection.ltr,
               style: usernameTextStyle,
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             )
           ],
@@ -51,21 +51,28 @@ class JokesHeader extends StatelessWidget {
       }
       return Row(
         children: [
-          Text(name.full),
-          const SizedBox(width: 4),
-          Text(
-            "@${author["username"]}",
-            textDirection: TextDirection.ltr,
-            style: usernameTextStyle,
+          RichText(
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
+            text: TextSpan(
+              text: name.full,
+              style: DefaultTextStyle.of(context).style,
+              children: <TextSpan>[
+                TextSpan(
+                  locale: Locale('en'),
+                  text: "@${author["username"]}",
+                  style: usernameTextStyle,
+                ),
+                TextSpan(text: ". $timagoString", style: timeagoTextStyle),
+              ],
+            ),
           ),
-          Text(". $timagoString", style: timeagoTextStyle),
         ],
       );
     }
 
     return Row(
-      mainAxisAlignment: MainAxisAlignment.start,
-      textDirection: TextDirection.ltr,
+      mainAxisAlignment: MainAxisAlignment.end,
       children: [
         stackedOrNot(),
       ],

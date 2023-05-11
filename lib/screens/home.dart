@@ -1,4 +1,3 @@
-import 'dart:io' show Platform;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../helpers/jokes_repository.dart';
@@ -15,9 +14,7 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   late ScrollController _scrollController;
   final List _jokes = [];
-  final indicator = Platform.isAndroid
-      ? const CircularProgressIndicator()
-      : const CupertinoActivityIndicator();
+  final indicator = const CupertinoActivityIndicator();
   int _page = 1;
   bool _isLoading = false;
   bool _hasMore = true;
@@ -86,7 +83,7 @@ class _HomeState extends State<Home> {
                     ),
                   );
                 }
-                return userContent(joke: _jokes[index]);
+                return UserContent(joke: _jokes[index]);
               }),
               separatorBuilder: ((context, index) => const Divider(
                     height: 1,

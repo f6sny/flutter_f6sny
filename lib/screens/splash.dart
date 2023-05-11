@@ -2,7 +2,6 @@ import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter_f6sny/screens/main.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class Splash extends StatelessWidget {
   const Splash({Key? key}) : super(key: key);
@@ -31,7 +30,7 @@ class Splash extends StatelessWidget {
           ],
         ),
       ),
-      nextScreen: Main(),
+      nextScreen: const Main(),
       duration: 2500,
     );
   }

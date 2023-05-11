@@ -43,7 +43,7 @@ class JokesFooterActions extends StatelessWidget {
             Navigator.push(
               context,
               CupertinoPageRoute(
-                title: "Hala",
+                title: "joke",
                 maintainState: true,
                 builder: (context) => Joke(joke: joke),
               ),

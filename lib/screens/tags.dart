@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_f6sny/extensions.dart';
 import 'package:flutter_f6sny/helpers/tags_repository.dart';
+import 'package:flutter_f6sny/screens/tag.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_f6sny/constants.dart' as constants;
 
@@ -41,22 +43,36 @@ class _TagsState extends State<Tags> {
           padding: const EdgeInsets.all(constants.spacingFactor),
           child: ListView.separated(
             itemBuilder: ((context, index) {
-              return Padding(
-                padding: const EdgeInsets.all(constants.spacingFactor),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(_tags[index]["title"],
-                        style: DefaultTextStyle.of(context).style.apply(
+              return GestureDetector(
+                child: Padding(
+                  padding: const EdgeInsets.all(constants.spacingFactor),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text("#${_tags[index]["title"]}",
+                          style: DefaultTextStyle.of(context).style.apply(
                               fontSizeFactor: 1.4,
                               fontWeightDelta: 2,
-                            )),
-                    Text(_tags[index]["description"],
-                        style: DefaultTextStyle.of(context).style.apply(
-                              color: Colors.black54,
-                            )),
-                  ],
+                              color: _tags[index]["hex_color"]
+                                  .toString()
+                                  .toColor())),
+                      Text(_tags[index]["description"],
+                          style: DefaultTextStyle.of(context).style.apply(
+                                color: Colors.black54,
+                              )),
+                    ],
+                  ),
                 ),
+                onTap: () async {
+                  Navigator.push(
+                    context,
+                    CupertinoPageRoute(
+                      title: "tag",
+                      maintainState: true,
+                      builder: (context) => Tag(tag: _tags[index]),
+                    ),
+                  );
+                },
               );
             }),
             separatorBuilder: ((context, index) => const Divider(

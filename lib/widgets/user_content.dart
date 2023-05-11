@@ -4,17 +4,16 @@ import 'package:flutter_f6sny/widgets/jokes_footer.dart';
 import 'package:flutter_f6sny/widgets/jokes_footer_actions.dart';
 import 'package:flutter_f6sny/widgets/jokes_header.dart';
 
-class userContent extends StatelessWidget {
+class UserContent extends StatelessWidget {
   final dynamic joke;
 
-  const userContent({super.key, required this.joke});
+  const UserContent({super.key, required this.joke});
 
   Widget _authorAvatar(BuildContext context) {
     String userInitials =
         joke["author"]["username"].toString().substring(0, 2).toUpperCase();
 
     if (joke["author"]["display_picture"] == null) {
-      print('picture is null');
       return CircleAvatar(
         backgroundColor: Colors.black12,
         radius: 26,
@@ -25,7 +24,6 @@ class userContent extends StatelessWidget {
                 fontSizeFactor: 1.2)),
       );
     }
-    print('picture is not null');
     String avatarURL = constants.baseUrl +
         joke["author"]["display_picture"]["formats"]["thumbnail"]["url"];
     return CircleAvatar(
@@ -37,8 +35,6 @@ class userContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(joke["display_picture"]);
-
     return Padding(
       padding: const EdgeInsets.only(
           bottom: constants.spacingFactor,
@@ -61,9 +57,9 @@ class userContent extends StatelessWidget {
                       children: [
                         JokesHeader(
                           author: joke["author"],
-                          jokeUpdatedAt: joke["updated_at"],
+                          jokeUpdatedAt: joke["created_at"],
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 10,
                         ),
                         Row(
