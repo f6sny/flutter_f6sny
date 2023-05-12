@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_f6sny/constants.dart' as constants;
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -27,11 +28,13 @@ class UserContentHeader extends StatelessWidget {
         locale: AppLocalizations.of(context)!.localeName);
     TextStyle usernameTextStyle = DefaultTextStyle.of(context).style.apply(
         fontSizeFactor: (constants.fontSizeFactor * 0.9),
-        color: Colors.black38,
+        color: CupertinoDynamicColor.withBrightness(
+            color: Colors.black38, darkColor: Colors.white),
         fontStyle: FontStyle.italic);
     TextStyle timeagoTextStyle = DefaultTextStyle.of(context).style.apply(
           fontSizeFactor: (constants.fontSizeFactor * 0.7),
-          color: Colors.black38,
+          color: const CupertinoDynamicColor.withBrightness(
+              color: Colors.black, darkColor: Colors.white),
         );
     Widget stackedOrNot() {
       if (stacked) {

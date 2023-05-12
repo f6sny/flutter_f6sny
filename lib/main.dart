@@ -22,15 +22,18 @@ class MyApp extends StatelessWidget {
       brightness: null,
       primaryColor: Color.fromARGB(255, 115, 98, 0),
       primaryContrastingColor: Colors.green,
-      barBackgroundColor: CupertinoDynamicColor.withBrightness(
-        color: Color.fromARGB(255, 255, 230, 0),
-        darkColor: Color(0xF01D1D1D),
+      barBackgroundColor: Color.fromARGB(255, 48, 44, 0),
+      scaffoldBackgroundColor: CupertinoDynamicColor.withBrightness(
+        color: Color.fromARGB(255, 245, 245, 245),
+        darkColor: Color.fromARGB(255, 68, 48, 0),
       ),
-      scaffoldBackgroundColor: Color.fromARGB(255, 245, 245, 245),
       textTheme: CupertinoTextThemeData(
         primaryColor: Colors.pink,
         textStyle: TextStyle(
-            color: Colors.black87,
+            color: CupertinoDynamicColor.withBrightness(
+              color: Colors.black,
+              darkColor: Colors.white,
+            ),
             fontSize: constants.fontSize,
             fontWeight: FontWeight.w100),
         actionTextStyle: TextStyle(
@@ -42,7 +45,10 @@ class MyApp extends StatelessWidget {
             fontSize: constants.fontSize * 2,
             fontWeight: FontWeight.w100),
         navTitleTextStyle: TextStyle(
-            color: Colors.black87,
+            color: CupertinoDynamicColor.withBrightness(
+              color: Colors.black,
+              darkColor: Colors.white,
+            ),
             fontSize: constants.fontSize * 1.2,
             fontWeight: FontWeight.w100),
         navLargeTitleTextStyle: TextStyle(
@@ -71,7 +77,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         localizationsDelegates: AppLocalizations.localizationsDelegates,
         supportedLocales: AppLocalizations.supportedLocales,
-        locale: const Locale("ar"),
+        locale: null,
         title: 'F6sny',
         initialRoute: '/',
         routes: {
