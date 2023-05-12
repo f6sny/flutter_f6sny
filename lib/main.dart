@@ -7,6 +7,7 @@ import 'package:flutter_f6sny/screens/splash.dart';
 import 'package:flutter_f6sny/screens/tags.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_f6sny/constants.dart' as constants;
+import 'package:google_fonts/google_fonts.dart';
 
 import 'app_routes.dart';
 
@@ -19,10 +20,10 @@ class MyApp extends StatelessWidget {
 
   CupertinoThemeData _buildThemeData() {
     return const CupertinoThemeData(
-      brightness: null,
-      primaryColor: Color.fromARGB(255, 115, 98, 0),
+      brightness: Brightness.light,
+      primaryColor: Color.fromARGB(255, 0, 0, 0),
       primaryContrastingColor: Colors.green,
-      barBackgroundColor: Color.fromARGB(255, 48, 44, 0),
+      barBackgroundColor: Color.fromARGB(255, 225, 169, 0),
       scaffoldBackgroundColor: CupertinoDynamicColor.withBrightness(
         color: Color.fromARGB(255, 245, 245, 245),
         darkColor: Color.fromARGB(255, 68, 48, 0),
@@ -45,10 +46,7 @@ class MyApp extends StatelessWidget {
             fontSize: constants.fontSize * 2,
             fontWeight: FontWeight.w100),
         navTitleTextStyle: TextStyle(
-            color: CupertinoDynamicColor.withBrightness(
-              color: Colors.black,
-              darkColor: Colors.white,
-            ),
+            color: Color.fromARGB(255, 255, 255, 255),
             fontSize: constants.fontSize * 1.2,
             fontWeight: FontWeight.w100),
         navLargeTitleTextStyle: TextStyle(
@@ -77,7 +75,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         localizationsDelegates: AppLocalizations.localizationsDelegates,
         supportedLocales: AppLocalizations.supportedLocales,
-        locale: null,
+        locale: const Locale('ar'),
         title: 'F6sny',
         initialRoute: '/',
         routes: {

@@ -28,8 +28,7 @@ class UserContentHeader extends StatelessWidget {
         locale: AppLocalizations.of(context)!.localeName);
     TextStyle usernameTextStyle = DefaultTextStyle.of(context).style.apply(
         fontSizeFactor: (constants.fontSizeFactor * 0.9),
-        color: CupertinoDynamicColor.withBrightness(
-            color: Colors.black38, darkColor: Colors.white),
+        color: Color.fromARGB(129, 0, 0, 0),
         fontStyle: FontStyle.italic);
     TextStyle timeagoTextStyle = DefaultTextStyle.of(context).style.apply(
           fontSizeFactor: (constants.fontSizeFactor * 0.7),

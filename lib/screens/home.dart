@@ -86,7 +86,7 @@ class _HomeState extends State<Home> {
                 return UserContent(content: _jokes[index]);
               }),
               separatorBuilder: ((context, index) => const Divider(
-                    height: 1,
+                    height: 20,
                   )),
               itemCount: _jokes.length + (_hasMore ? 1 : 0),
             ),

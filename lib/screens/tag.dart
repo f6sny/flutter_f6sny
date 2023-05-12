@@ -1,13 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_f6sny/extensions.dart';
-
 import '../helpers/jokes_repository.dart';
 import '../widgets/content/user_content.dart';
+import '../widgets/skeleton.dart';
 
 class Tag extends StatefulWidget {
   final dynamic tag;
-
   const Tag({super.key, this.tag});
 
   @override
@@ -75,7 +74,9 @@ class _TagState extends State<Tag> {
         child: SafeArea(
           child: Column(
             children: [
-              Padding(
+              Container(
+                width: double.maxFinite,
+                // color: Colors.amber,
                 padding: const EdgeInsets.all(10),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -104,13 +105,15 @@ class _TagState extends State<Tag> {
                   controller: _scrollController,
                   itemBuilder: ((context, index) {
                     if (index == _jokes.length) {
-                      return SizedBox(
-                        width: 32,
-                        height: 32,
-                        child: FittedBox(
-                          child: indicator,
-                        ),
-                      );
+                      return ListView.separated(
+                          shrinkWrap: true,
+                          physics: ClampingScrollPhysics(),
+                          itemBuilder: (context, index) =>
+                              const ContentSkeleton(),
+                          separatorBuilder: (context, index) => const Divider(
+                                height: 15,
+                              ),
+                          itemCount: 5);
                     }
                     return UserContent(content: _jokes[index]);
                   }),
@@ -123,5 +126,42 @@ class _TagState extends State<Tag> {
             ],
           ),
         ));
+  }
+}
+
+class ContentSkeleton extends StatelessWidget {
+  const ContentSkeleton({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(10),
+      child: Row(
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Skeleton(height: 20, width: 160),
+              SizedBox(
+                height: 10,
+              ),
+              Skeleton(height: 16, width: 260),
+              SizedBox(
+                height: 5,
+              ),
+              Skeleton(height: 16, width: 300),
+              SizedBox(
+                height: 5,
+              ),
+              Skeleton(height: 16, width: 150)
+            ],
+          ),
+          Skeleton(height: 50, width: 50),
+        ],
+      ),
+    );
   }
 }

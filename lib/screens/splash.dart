@@ -1,5 +1,5 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
-import 'package:flutter_f6sny/screens/main.dart';
+import 'package:flutter_f6sny/navigation/tab_scaffold.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:flutter/material.dart';
 
