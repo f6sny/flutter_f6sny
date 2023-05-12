@@ -58,7 +58,7 @@ class UserContentHeader extends StatelessWidget {
             style: DefaultTextStyle.of(context).style,
             children: <TextSpan>[
               TextSpan(
-                locale: Locale('en'),
+                locale: const Locale('en'),
                 text: "@${author["username"]}",
                 style: usernameTextStyle,
               ),

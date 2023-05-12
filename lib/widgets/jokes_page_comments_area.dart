@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_f6sny/constants.dart' as constants;
-import 'package:flutter_f6sny/widgets/user_content.dart';
+import 'package:flutter_f6sny/widgets/content/user_content.dart';
 
 class JokesPageCommentsArea extends StatefulWidget {
   final List jokeComments;
@@ -26,7 +26,7 @@ class _JokesPageCommentsAreaState extends State<JokesPageCommentsArea> {
 
       return ListView.separated(
           itemBuilder: ((context, index) {
-            return UserContent(joke: widget.jokeComments[index]);
+            return UserContent(content: widget.jokeComments[index]);
           }),
           separatorBuilder: ((context, index) => const Divider(
                 height: 1,

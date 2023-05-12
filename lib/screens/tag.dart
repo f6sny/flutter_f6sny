@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_f6sny/extensions.dart';
 
 import '../helpers/jokes_repository.dart';
-import '../widgets/user_content.dart';
+import '../widgets/content/user_content.dart';
 
 class Tag extends StatefulWidget {
   final dynamic tag;
@@ -112,7 +112,7 @@ class _TagState extends State<Tag> {
                         ),
                       );
                     }
-                    return UserContent(joke: _jokes[index]);
+                    return UserContent(content: _jokes[index]);
                   }),
                   separatorBuilder: ((context, index) => const Divider(
                         height: 20,
