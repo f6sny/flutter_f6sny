@@ -5,7 +5,7 @@ import 'package:flutter_f6sny/extensions.dart';
 import 'package:flutter_f6sny/helpers/tags_repository.dart';
 import 'package:flutter_f6sny/screens/tag.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:flutter_f6sny/constants.dart' as constants;
+import 'package:flutter_f6sny/constants.dart';
 
 import '../widgets/skeleton.dart';
 
@@ -51,13 +51,13 @@ class _TagsState extends State<Tags> {
             middle: Text(AppLocalizations.of(context)!.tagsPageTitle)),
         child: SafeArea(
             child: Padding(
-          padding: const EdgeInsets.all(constants.spacingFactor),
+          padding: EdgeInsets.all(AppSettings.spacingFactor),
           child: Column(children: [
             Flexible(
                 child: _isLoading
                     ? ListView.separated(
-                        itemBuilder: ((context, index) => TagSkeleton()),
-                        separatorBuilder: (context, index) => Divider(
+                        itemBuilder: ((context, index) => const TagSkeleton()),
+                        separatorBuilder: (context, index) => const Divider(
                               height: 15,
                             ),
                         itemCount: 5)
@@ -66,7 +66,7 @@ class _TagsState extends State<Tags> {
                           return GestureDetector(
                             child: Padding(
                               padding:
-                                  const EdgeInsets.all(constants.spacingFactor),
+                                  EdgeInsets.all(AppSettings.spacingFactor),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
@@ -107,32 +107,5 @@ class _TagsState extends State<Tags> {
                       ))
           ]),
         )));
-  }
-}
-
-class TagSkeleton extends StatelessWidget {
-  const TagSkeleton({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.all(10),
-      child: Row(
-        mainAxisSize: MainAxisSize.max,
-        children: [
-          Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: const [
-              Skeleton(height: 20, width: 160),
-              SizedBox(
-                height: 10,
-              ),
-              Skeleton(height: 20, width: 260)
-            ],
-          )
-        ],
-      ),
-    );
   }
 }

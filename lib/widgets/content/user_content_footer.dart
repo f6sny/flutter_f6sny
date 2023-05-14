@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_f6sny/constants.dart' as constants;
+import 'package:flutter_f6sny/constants.dart';
+import 'package:flutter_f6sny/themes/theme.dart';
 
 import '../../screens/tag.dart';
 
@@ -10,18 +10,12 @@ class UserContentFooter extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // String formattedTags = "";
-    // if (tags != null) {
-    //   formattedTags = tags!.map<String>((tag) => '#${tag['title']}').join('، ');
-    // }
-
     return tags != null
+        // ignore: sized_box_for_whitespace
         ? Container(
             width: double.maxFinite,
-            //color: Colors.red,
             child: Wrap(
               spacing: 4,
-              runSpacing: 8,
               children: tags!.map((tag) => ClickableTag(tag: tag)).toList(),
             ),
           )
@@ -37,10 +31,11 @@ class ClickableTag extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
         child: Text(
-          "#" + tag["title"],
+          "#${tag["title"]}",
           style: DefaultTextStyle.of(context).style.apply(
-                fontSizeFactor: (constants.fontSizeFactor * 0.9),
-                color: Colors.black38,
+                fontSizeFactor: (AppSettings.fontSizeFactor * 0.9),
+                color: myColors["UserContentFooter"]["ClickableTag"]
+                    ["TextColor"],
               ),
         ),
         onTap: () async {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_f6sny/constants.dart' as constants;
 import 'package:flutter_f6sny/widgets/content/user_content.dart';
+import 'package:flutter_f6sny/themes/theme.dart';
 
 class JokesPageCommentsArea extends StatefulWidget {
   final List jokeComments;
@@ -13,12 +13,6 @@ class JokesPageCommentsArea extends StatefulWidget {
 class _JokesPageCommentsAreaState extends State<JokesPageCommentsArea> {
   @override
   Widget build(BuildContext context) {
-    TextStyle titleStyle = DefaultTextStyle.of(context).style.apply(
-          fontSizeFactor: (constants.fontSizeFactor * 1.2),
-          fontWeightDelta: 4,
-          color: Colors.black87,
-        );
-
     Widget commentsOrNot() {
       if (widget.jokeComments.isEmpty) {
         return const Text("No comments right now");
@@ -45,11 +39,12 @@ class _JokesPageCommentsAreaState extends State<JokesPageCommentsArea> {
             Expanded(
                 child: Title(
                     title: "hi",
-                    color: Colors.black,
+                    color: myColors["JokesPageCommentsArea"]["title"]
+                        ["textColor"],
                     child: Text(
                       "التعليقات",
                       textAlign: TextAlign.right,
-                      style: titleStyle,
+                      style: myTextStyles(context, "commentsTitleStyle"),
                     )))
           ],
         ),

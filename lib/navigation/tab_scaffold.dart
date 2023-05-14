@@ -3,6 +3,7 @@ import 'package:flutter_f6sny/screens/search.dart';
 import 'package:flutter_f6sny/screens/settings.dart';
 import 'package:flutter_f6sny/screens/tags.dart';
 import '../screens/home.dart';
+import '../themes/theme.dart';
 
 class Main extends StatefulWidget {
   const Main({super.key});
@@ -17,11 +18,12 @@ class _MainState extends State<Main> {
     return CupertinoTabScaffold(
         tabBar: CupertinoTabBar(
             height: 60,
-            activeColor: Color.fromARGB(255, 255, 255, 255),
-            inactiveColor: Color.fromARGB(255, 255, 235, 124),
-            border: const Border(
+            activeColor: myColors["CupertinoTabBarColors"]["activeColor"],
+            inactiveColor: myColors["CupertinoTabBarColors"]["inactiveColor"],
+            border: Border(
                 top: BorderSide(
-                    color: Color.fromARGB(255, 211, 179, 0), width: 1)),
+                    color: myColors["CupertinoTabBarColors"]["borderSideColor"],
+                    width: 1)),
             iconSize: 30,
             items: const [
               BottomNavigationBarItem(

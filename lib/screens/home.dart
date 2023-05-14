@@ -4,6 +4,8 @@ import '../helpers/jokes_repository.dart';
 import '../widgets/content/user_content.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+import '../widgets/skeleton.dart';
+
 class Home extends StatefulWidget {
   const Home({super.key});
 
@@ -75,13 +77,14 @@ class _HomeState extends State<Home> {
               controller: _scrollController,
               itemBuilder: ((context, index) {
                 if (index == _jokes.length) {
-                  return SizedBox(
-                    width: 32,
-                    height: 32,
-                    child: FittedBox(
-                      child: indicator,
-                    ),
-                  );
+                  return ListView.separated(
+                      shrinkWrap: true,
+                      physics: const ClampingScrollPhysics(),
+                      itemBuilder: (context, index) => const ContentSkeleton(),
+                      separatorBuilder: (context, index) => const Divider(
+                            height: 15,
+                          ),
+                      itemCount: 3);
                 }
                 return UserContent(content: _jokes[index]);
               }),

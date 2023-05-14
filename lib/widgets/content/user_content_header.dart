@@ -1,9 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_f6sny/constants.dart' as constants;
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:timeago/timeago.dart' as timeago;
 import 'package:namefully/namefully.dart';
+
+import '../../themes/theme.dart';
 
 class UserContentHeader extends StatelessWidget {
   final String jokeUpdatedAt;
@@ -24,26 +25,22 @@ class UserContentHeader extends StatelessWidget {
       firstName: author["first_name"],
       lastName: author["last_name"],
     );
+
     String timagoString = timeago.format(DateTime.parse(jokeUpdatedAt),
         locale: AppLocalizations.of(context)!.localeName);
-    TextStyle usernameTextStyle = DefaultTextStyle.of(context).style.apply(
-        fontSizeFactor: (constants.fontSizeFactor * 0.9),
-        color: Color.fromARGB(129, 0, 0, 0),
-        fontStyle: FontStyle.italic);
-    TextStyle timeagoTextStyle = DefaultTextStyle.of(context).style.apply(
-          fontSizeFactor: (constants.fontSizeFactor * 0.7),
-          color: const CupertinoDynamicColor.withBrightness(
-              color: Colors.black, darkColor: Colors.white),
-        );
+
     Widget stackedOrNot() {
       if (stacked) {
         return Column(
           children: [
-            Text(name.full),
+            Text(
+              name.full,
+              style: myTextStyles(context, "fullnameTextStyle"),
+            ),
             Text(
               "@${author["username"]}",
               textDirection: TextDirection.ltr,
-              style: usernameTextStyle,
+              style: myTextStyles(context, "usernameTextStyle"),
             ),
             const SizedBox(
               height: 10,
@@ -57,14 +54,16 @@ class UserContentHeader extends StatelessWidget {
           overflow: TextOverflow.ellipsis,
           text: TextSpan(
             text: name.full,
-            style: DefaultTextStyle.of(context).style,
-            children: <TextSpan>[
+            style: myTextStyles(context, "fullnameTextStyle"),
+            children: [
               TextSpan(
                 locale: const Locale('en'),
-                text: "@${author["username"]}",
-                style: usernameTextStyle,
+                text: "${author["username"]}@",
+                style: myTextStyles(context, "usernameTextStyle"),
               ),
-              TextSpan(text: ". $timagoString", style: timeagoTextStyle),
+              TextSpan(
+                  text: ". $timagoString",
+                  style: myTextStyles(context, "timeagoTextStyle")),
             ],
           ),
         ),

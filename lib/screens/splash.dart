@@ -1,5 +1,6 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter_f6sny/navigation/tab_scaffold.dart';
+import 'package:flutter_f6sny/themes/theme.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:flutter/material.dart';
 
@@ -9,7 +10,7 @@ class Splash extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AnimatedSplashScreen(
-      backgroundColor: const Color.fromARGB(255, 213, 167, 0),
+      backgroundColor: myColors["AnimatedSplashScreen"]["backgroundColor"],
       splashTransition: SplashTransition.slideTransition,
       pageTransitionType: PageTransitionType.rightToLeft,
       splashIconSize: double.infinity,
