@@ -5,15 +5,15 @@ import '../helpers/jokes_repository.dart';
 import '../widgets/content/user_content.dart';
 import '../widgets/skeleton.dart';
 
-class Tag extends StatefulWidget {
+class TagPage extends StatefulWidget {
   final dynamic tag;
-  const Tag({super.key, this.tag});
+  const TagPage({super.key, this.tag});
 
   @override
-  State<Tag> createState() => _TagState();
+  State<TagPage> createState() => _TagPageState();
 }
 
-class _TagState extends State<Tag> {
+class _TagPageState extends State<TagPage> {
   late ScrollController _scrollController;
   final List _jokes = [];
   final indicator = const CupertinoActivityIndicator();

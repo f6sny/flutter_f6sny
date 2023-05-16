@@ -4,8 +4,8 @@ import 'package:flutter_f6sny/themes/theme.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:flutter/material.dart';
 
-class Splash extends StatelessWidget {
-  const Splash({Key? key}) : super(key: key);
+class SplashPage extends StatelessWidget {
+  const SplashPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

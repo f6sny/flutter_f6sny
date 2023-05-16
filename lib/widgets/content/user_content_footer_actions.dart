@@ -3,7 +3,7 @@ import 'package:flutter_f6sny/constants.dart';
 import 'package:flutter_f6sny/themes/theme.dart';
 import 'package:share_plus/share_plus.dart';
 
-import '../../screens/joke.dart';
+import '../../screens/joke_page.dart';
 
 class UserContentFooterActions extends StatelessWidget {
   final dynamic joke;
@@ -49,7 +49,7 @@ class UserContentFooterActions extends StatelessWidget {
               CupertinoPageRoute(
                 title: "joke",
                 maintainState: true,
-                builder: (context) => Joke(joke: joke),
+                builder: (context) => JokePage(joke: joke),
               ),
             );
           },

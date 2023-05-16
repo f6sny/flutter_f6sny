@@ -1,22 +1,29 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_f6sny/screens/search.dart';
-import 'package:flutter_f6sny/screens/settings.dart';
-import 'package:flutter_f6sny/screens/home.dart';
-import 'package:flutter_f6sny/screens/splash.dart';
-import 'package:flutter_f6sny/screens/tags.dart';
+import 'package:flutter_f6sny/screens/search_page.dart';
+import 'package:flutter_f6sny/screens/home_page.dart';
+import 'package:flutter_f6sny/screens/settings_page.dart';
+import 'package:flutter_f6sny/screens/splash_page.dart';
+import 'package:flutter_f6sny/screens/tags_page.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_f6sny/themes/theme.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_settings_screens/flutter_settings_screens.dart';
 
 import 'app_routes.dart';
 
-void main() {
+Future main() async {
+  await Settings.init(cacheProvider: SharePreferenceCache());
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  static const String title = 'Settings';
   const MyApp({super.key});
 
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return CupertinoApp(
@@ -27,12 +34,12 @@ class MyApp extends StatelessWidget {
         title: 'F6sny',
         initialRoute: '/',
         routes: {
-          AppRoutes.home: (context) => const Home(),
-          AppRoutes.search: (context) => const Search(),
-          AppRoutes.tags: (context) => const Tags(),
-          AppRoutes.settings: (context) => const Settings(),
+          AppRoutes.home: (context) => const HomePage(),
+          AppRoutes.search: (context) => const SearchPage(),
+          AppRoutes.tags: (context) => const TagsPage(),
+          AppRoutes.settings: (context) => const SettingsPage(),
         },
         theme: buildThemeData(),
-        home: const Splash());
+        home: const SplashPage());
   }
 }

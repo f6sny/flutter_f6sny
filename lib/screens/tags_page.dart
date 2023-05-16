@@ -3,20 +3,20 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_f6sny/extensions.dart';
 import 'package:flutter_f6sny/helpers/tags_repository.dart';
-import 'package:flutter_f6sny/screens/tag.dart';
+import 'package:flutter_f6sny/screens/tag_page.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_f6sny/constants.dart';
 
 import '../widgets/skeleton.dart';
 
-class Tags extends StatefulWidget {
-  const Tags({super.key});
+class TagsPage extends StatefulWidget {
+  const TagsPage({super.key});
 
   @override
-  State<Tags> createState() => _TagsState();
+  State<TagsPage> createState() => _TagsPageState();
 }
 
-class _TagsState extends State<Tags> {
+class _TagsPageState extends State<TagsPage> {
   final List _tags = [];
   final indicator = const CupertinoActivityIndicator();
   bool _isLoading = true;
@@ -94,7 +94,8 @@ class _TagsState extends State<Tags> {
                                 CupertinoPageRoute(
                                   title: "tag",
                                   maintainState: true,
-                                  builder: (context) => Tag(tag: _tags[index]),
+                                  builder: (context) =>
+                                      TagPage(tag: _tags[index]),
                                 ),
                               );
                             },

@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_f6sny/constants.dart';
 import 'package:flutter_f6sny/themes/theme.dart';
 
-import '../../screens/tag.dart';
+import '../../screens/tag_page.dart';
 
 class UserContentFooter extends StatelessWidget {
   final List? tags;
@@ -44,7 +44,7 @@ class ClickableTag extends StatelessWidget {
             CupertinoPageRoute(
               title: "tag",
               maintainState: true,
-              builder: (context) => Tag(tag: tag),
+              builder: (context) => TagPage(tag: tag),
             ),
           );
         });

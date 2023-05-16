@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_f6sny/screens/search.dart';
-import 'package:flutter_f6sny/screens/settings.dart';
-import 'package:flutter_f6sny/screens/tags.dart';
-import '../screens/home.dart';
+import 'package:flutter_f6sny/screens/search_page.dart';
+import 'package:flutter_f6sny/screens/settings_page.dart';
+import 'package:flutter_f6sny/screens/tags_page.dart';
+import '../screens/home_page.dart';
 import '../themes/theme.dart';
 
 class Main extends StatefulWidget {
@@ -42,15 +42,15 @@ class _MainState extends State<Main> {
         tabBuilder: ((context, index) {
           switch (index) {
             case 0:
-              return const Home();
+              return const HomePage();
             case 1:
-              return const Search();
+              return const SearchPage();
             case 2:
-              return const Tags();
+              return const TagsPage();
             case 3:
-              return const Settings();
+              return const SettingsPage();
             default:
-              return const Home();
+              return const HomePage();
           }
         }));
   }

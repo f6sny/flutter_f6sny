@@ -5,9 +5,9 @@ import 'package:flutter_f6sny/widgets/jokes_page_joke_area.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_f6sny/constants.dart';
 
-class Joke extends StatelessWidget {
+class JokePage extends StatelessWidget {
   final dynamic joke;
-  const Joke({super.key, required this.joke});
+  const JokePage({super.key, required this.joke});
 
   @override
   Widget build(BuildContext context) {

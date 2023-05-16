@@ -22,6 +22,7 @@ dependencies:
   namefully: ^0.2.0
   google_fonts: ^4.0.4
   shared_preferences: ^2.1.1
+  flutter_settings_screens: ^0.3.3-null-safety+2
   
 
 dev_dependencies:
