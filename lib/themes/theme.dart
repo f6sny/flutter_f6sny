@@ -2,16 +2,19 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_f6sny/constants.dart';
 
-CupertinoThemeData buildThemeData() {
+CupertinoThemeData buildThemeData(bool isDarkMode) {
   return CupertinoThemeData(
-    brightness: Brightness.light,
-    primaryColor: const Color.fromARGB(255, 0, 0, 0),
+    brightness: isDarkMode ? Brightness.dark : Brightness.light,
+    primaryColor: const CupertinoDynamicColor.withBrightness(
+        color: Color.fromARGB(255, 0, 0, 0),
+        darkColor: Color.fromARGB(255, 255, 255, 255)),
     primaryContrastingColor: Colors.green,
-    barBackgroundColor: const Color.fromARGB(255, 225, 169, 0),
+    barBackgroundColor: const CupertinoDynamicColor.withBrightness(
+        color: Color.fromARGB(255, 211, 179, 0),
+        darkColor: Color.fromARGB(255, 0, 3, 156)),
     scaffoldBackgroundColor: const CupertinoDynamicColor.withBrightness(
-      color: Color.fromARGB(255, 245, 245, 245),
-      darkColor: Color.fromARGB(255, 68, 48, 0),
-    ),
+        color: Color.fromARGB(255, 255, 255, 255),
+        darkColor: Color.fromARGB(255, 0, 25, 74)),
     textTheme: CupertinoTextThemeData(
       primaryColor: Colors.pink,
       textStyle: const TextStyle(
@@ -55,15 +58,25 @@ CupertinoThemeData buildThemeData() {
 
 Map<String, dynamic> myColors = {
   "CupertinoTabBarColors": {
-    "activeColor": const Color.fromARGB(255, 255, 255, 255),
-    "inactiveColor": const Color.fromARGB(255, 255, 235, 124),
-    "borderSideColor": const Color.fromARGB(255, 211, 179, 0),
+    "backgroundColor": const CupertinoDynamicColor.withBrightness(
+        color: Color.fromARGB(255, 211, 179, 0),
+        darkColor: Color.fromARGB(255, 0, 3, 156)),
+    "activeColor": const CupertinoDynamicColor.withBrightness(
+        color: Color.fromARGB(255, 255, 255, 255),
+        darkColor: Color.fromARGB(255, 255, 255, 255)),
+    "inactiveColor": const CupertinoDynamicColor.withBrightness(
+        color: Color.fromARGB(255, 255, 208, 0),
+        darkColor: Color.fromARGB(255, 62, 32, 255)),
+    "borderSideColor": const CupertinoDynamicColor.withBrightness(
+        color: Color.fromARGB(255, 211, 179, 0),
+        darkColor: Color.fromARGB(255, 0, 3, 156)),
   },
   "AnimatedSplashScreen": {
     "backgroundColor": const Color.fromARGB(255, 213, 167, 0),
   },
   "UserContentFooterActions": {
-    "IconColor": Colors.black26,
+    "IconColor": const CupertinoDynamicColor.withBrightness(
+        color: Colors.black26, darkColor: Colors.white),
   },
   "Skeleton": {"backgroundColor": Colors.black.withOpacity(0.04)},
   "UserContentFooter": {
@@ -71,8 +84,10 @@ Map<String, dynamic> myColors = {
   },
   "UserContent": {
     "CircleAvatar": {
-      "backgroundColor": Colors.black12,
-      "textColor": Colors.black54
+      "backgroundColor": const CupertinoDynamicColor.withBrightness(
+          color: Colors.yellowAccent, darkColor: Colors.green),
+      "textColor": const CupertinoDynamicColor.withBrightness(
+          color: Colors.black87, darkColor: Colors.white60)
     }
   },
   "JokesPageCommentsArea": {
@@ -89,13 +104,20 @@ TextStyle myTextStyles(context, field) {
     case "usernameTextStyle":
       return DefaultTextStyle.of(context).style.apply(
           fontSizeFactor: (AppSettings.fontSizeFactor * 0.7),
-          color: const Color.fromARGB(129, 0, 0, 0),
+          color: CupertinoDynamicColor.resolve(
+              CupertinoDynamicColor.withBrightness(
+                  color: Color.fromARGB(255, 2, 2, 2),
+                  darkColor: Color.fromARGB(255, 255, 255, 255)),
+              context),
           fontStyle: FontStyle.italic);
     case "timeagoTextStyle":
       return DefaultTextStyle.of(context).style.apply(
             fontSizeFactor: (AppSettings.fontSizeFactor * 0.7),
-            color: const CupertinoDynamicColor.withBrightness(
-                color: Colors.black, darkColor: Colors.white),
+            color: CupertinoDynamicColor.resolve(
+                CupertinoDynamicColor.withBrightness(
+                    color: Color.fromARGB(255, 2, 2, 2),
+                    darkColor: Color.fromARGB(255, 255, 255, 255)),
+                context),
           );
     case "commentsTitleStyle":
       return DefaultTextStyle.of(context).style.apply(

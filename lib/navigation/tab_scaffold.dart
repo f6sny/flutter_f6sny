@@ -18,6 +18,8 @@ class _MainState extends State<Main> {
     return CupertinoTabScaffold(
         tabBar: CupertinoTabBar(
             height: 60,
+            backgroundColor: myColors["CupertinoTabBarColors"]
+                ["backgroundColor"],
             activeColor: myColors["CupertinoTabBarColors"]["activeColor"],
             inactiveColor: myColors["CupertinoTabBarColors"]["inactiveColor"],
             border: Border(
@@ -44,7 +46,7 @@ class _MainState extends State<Main> {
             case 0:
               return const HomePage();
             case 1:
-              return const SearchPage();
+              return SearchPage();
             case 2:
               return const TagsPage();
             case 3:

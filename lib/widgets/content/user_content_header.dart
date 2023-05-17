@@ -6,7 +6,7 @@ import 'package:namefully/namefully.dart';
 
 import '../../themes/theme.dart';
 
-class UserContentHeader extends StatelessWidget {
+class UserContentHeader extends StatefulWidget {
   final String jokeUpdatedAt;
   final dynamic author;
   final bool stacked;
@@ -17,20 +17,25 @@ class UserContentHeader extends StatelessWidget {
       this.stacked = false});
 
   @override
+  State<UserContentHeader> createState() => _UserContentHeaderState();
+}
+
+class _UserContentHeaderState extends State<UserContentHeader> {
+  @override
   Widget build(BuildContext context) {
     timeago.setLocaleMessages('ar', timeago.ArMessages());
     timeago.setLocaleMessages('ar_short', timeago.ArShortMessages());
 
     var name = Namefully.only(
-      firstName: author["first_name"],
-      lastName: author["last_name"],
+      firstName: widget.author["first_name"],
+      lastName: widget.author["last_name"],
     );
 
-    String timagoString = timeago.format(DateTime.parse(jokeUpdatedAt),
+    String timagoString = timeago.format(DateTime.parse(widget.jokeUpdatedAt),
         locale: AppLocalizations.of(context)!.localeName);
 
     Widget stackedOrNot() {
-      if (stacked) {
+      if (widget.stacked) {
         return Column(
           children: [
             Text(
@@ -38,7 +43,7 @@ class UserContentHeader extends StatelessWidget {
               style: myTextStyles(context, "fullnameTextStyle"),
             ),
             Text(
-              "@${author["username"]}",
+              "@${widget.author["username"]}",
               textDirection: TextDirection.ltr,
               style: myTextStyles(context, "usernameTextStyle"),
             ),
@@ -58,7 +63,7 @@ class UserContentHeader extends StatelessWidget {
             children: [
               TextSpan(
                 locale: const Locale('en'),
-                text: "${author["username"]}@",
+                text: "${widget.author["username"]}@",
                 style: myTextStyles(context, "usernameTextStyle"),
               ),
               TextSpan(

@@ -17,7 +17,8 @@ class UserContentFooterActions extends StatelessWidget {
       children: [
         GestureDetector(
           child: Icon(CupertinoIcons.share,
-              color: myColors["UserContentFooterActions"]["IconColor"],
+              color: CupertinoDynamicColor.resolve(
+                  myColors["UserContentFooterActions"]["IconColor"], context),
               size: 18),
           onTap: () async {
             await Share.share(joke["content"]);
@@ -26,7 +27,8 @@ class UserContentFooterActions extends StatelessWidget {
         Row(
           children: [
             Icon(CupertinoIcons.heart,
-                color: myColors["UserContentFooterActions"]["IconColor"],
+                color: CupertinoDynamicColor.resolve(
+                    myColors["UserContentFooterActions"]["IconColor"], context),
                 size: 18),
             SizedBox(
               width: AppSettings.spacingFactor,
@@ -34,14 +36,17 @@ class UserContentFooterActions extends StatelessWidget {
             Text(
               "5",
               style: DefaultTextStyle.of(context).style.apply(
-                  color: myColors["UserContentFooterActions"]["IconColor"],
+                  color: CupertinoDynamicColor.resolve(
+                      myColors["UserContentFooterActions"]["IconColor"],
+                      context),
                   fontSizeDelta: 2),
             ),
           ],
         ),
         GestureDetector(
           child: Icon(CupertinoIcons.chat_bubble,
-              color: myColors["UserContentFooterActions"]["IconColor"],
+              color: CupertinoDynamicColor.resolve(
+                  myColors["UserContentFooterActions"]["IconColor"], context),
               size: 18),
           onTap: () async {
             Navigator.push(

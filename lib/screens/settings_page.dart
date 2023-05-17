@@ -12,17 +12,19 @@ class SettingsPage extends StatefulWidget {
 class _SettingsPageState extends State<SettingsPage> {
   static const keyDarkMode = 'key-dark-mode';
   static const keySafeMode = 'key-safe-mode';
+
   @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
       navigationBar: const CupertinoNavigationBar(
-        middle: Text('Settings'),
+        middle: Text('الإعدادات'),
       ),
       child: SafeArea(
           child: ListView(
         children: [
           SettingsGroup(
-              title: "General",
+              title: "خيارات عامة",
+              titleTextStyle: TextStyle(locale: Locale("ar")),
               children: <Widget>[buildDarkMode(), buildSafeMode()])
         ],
       )),
@@ -30,8 +32,10 @@ class _SettingsPageState extends State<SettingsPage> {
   }
 
   Widget buildSafeMode() => DropDownSettingsTile(
-      title: "Safe Mode",
+      title: "الوضع الآمن",
       settingKey: keySafeMode,
+      subtitle: "هذه الخاصية غير مفعلة حاليا",
+      subtitleTextStyle: TextStyle(color: Colors.red),
       leading: const IconWidget(
           color: Color.fromARGB(255, 213, 46, 243), icon: Icons.lock),
       selected: 1,

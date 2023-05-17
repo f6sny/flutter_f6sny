@@ -16,7 +16,6 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   late ScrollController _scrollController;
   final List _jokes = [];
-  final indicator = const CupertinoActivityIndicator();
   int _page = 1;
   bool _isLoading = false;
   bool _hasMore = true;

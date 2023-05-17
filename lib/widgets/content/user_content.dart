@@ -4,38 +4,19 @@ import 'package:flutter_f6sny/themes/theme.dart';
 import 'package:flutter_f6sny/widgets/content/user_content_footer.dart';
 import 'package:flutter_f6sny/widgets/content/user_content_footer_actions.dart';
 import 'package:flutter_f6sny/widgets/content/user_content_header.dart';
+import 'package:flutter_f6sny/widgets/content/user_content_user_avatar.dart';
 
-class UserContent extends StatelessWidget {
+class UserContent extends StatefulWidget {
   final dynamic content;
 
   const UserContent({super.key, required this.content});
 
-  Widget _authorAvatar(BuildContext context) {
-    String userInitials =
-        content["author"]["username"].toString().substring(0, 2).toUpperCase();
+  @override
+  State<UserContent> createState() => _UserContentState();
+}
 
-    if (content["author"]["display_picture"] == null) {
-      return CircleAvatar(
-        backgroundColor: myColors["UserContent"]["CircleAvatar"]
-            ["backgroundColor"],
-        radius: 26,
-        child: Text(userInitials,
-            style: DefaultTextStyle.of(context).style.apply(
-                fontWeightDelta: 2,
-                color: myColors["UserContent"]["CircleAvatar"]["textColor"],
-                fontSizeFactor: 1.2)),
-      );
-    }
-    String avatarURL = AppSettings.baseUrl +
-        content["author"]["display_picture"]["formats"]["thumbnail"]["url"];
-    return CircleAvatar(
-      backgroundColor: myColors["UserContent"]["CircleAvatar"]
-          ["backgroundColor"],
-      radius: 26,
-      backgroundImage: NetworkImage(avatarURL),
-    );
-  }
-
+class _UserContentState extends State<UserContent> {
+  @override
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -59,8 +40,8 @@ class UserContent extends StatelessWidget {
                     child: Column(
                       children: [
                         UserContentHeader(
-                          author: content["author"],
-                          jokeUpdatedAt: content["created_at"],
+                          author: widget.content["author"],
+                          jokeUpdatedAt: widget.content["created_at"],
                         ),
                         const SizedBox(
                           height: 10,
@@ -69,22 +50,22 @@ class UserContent extends StatelessWidget {
                           children: [
                             Expanded(
                               child: Text(
-                                content["content"],
+                                widget.content["content"],
                               ),
                             ),
                           ],
                         ),
                         UserContentFooter(
-                          tags: content["tags"],
+                          tags: widget.content["tags"],
                         ),
                         const SizedBox(
                           height: 10,
                         ),
-                        UserContentFooterActions(joke: content),
+                        UserContentFooterActions(joke: widget.content),
                       ],
                     ),
                   )),
-              _authorAvatar(context),
+              UserAvatar(content: widget.content),
             ],
           )
         ],

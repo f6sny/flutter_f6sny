@@ -26,20 +26,26 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return CupertinoApp(
-        debugShowCheckedModeBanner: false,
-        localizationsDelegates: AppLocalizations.localizationsDelegates,
-        supportedLocales: AppLocalizations.supportedLocales,
-        locale: const Locale('ar'),
-        title: 'F6sny',
-        initialRoute: '/',
-        routes: {
-          AppRoutes.home: (context) => const HomePage(),
-          AppRoutes.search: (context) => const SearchPage(),
-          AppRoutes.tags: (context) => const TagsPage(),
-          AppRoutes.settings: (context) => const SettingsPage(),
-        },
-        theme: buildThemeData(),
-        home: const SplashPage());
+    final isDarkMode = Settings.getValue<bool>('key-dark-mode');
+
+    return ValueChangeObserver(
+      cacheKey: 'key-dark-mode',
+      defaultValue: true,
+      builder: (_, isDarkMode, __) => CupertinoApp(
+          debugShowCheckedModeBanner: false,
+          localizationsDelegates: AppLocalizations.localizationsDelegates,
+          supportedLocales: AppLocalizations.supportedLocales,
+          locale: const Locale('ar'),
+          title: 'F6sny',
+          initialRoute: '/',
+          routes: {
+            AppRoutes.home: (context) => const HomePage(),
+            AppRoutes.search: (context) => SearchPage(),
+            AppRoutes.tags: (context) => const TagsPage(),
+            AppRoutes.settings: (context) => const SettingsPage(),
+          },
+          theme: buildThemeData(isDarkMode),
+          home: const SplashPage()),
+    );
   }
 }
